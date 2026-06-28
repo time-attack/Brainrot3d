@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259F241C289E6A1D570F0B7E /* IGCrypto.swift */; };
+		43851DC953428E5C9052A1BE /* TrackingToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */; };
 		64062B66FA5054FF1D75083D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B00B61D5235A4A3094EB5E /* AppModel.swift */; };
 		69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D83596C0DCECFA60D6B7CD /* LoginView.swift */; };
 		6BF577557127762BF85C28B7 /* IGClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B970132A086553681C141 /* IGClient.swift */; };
@@ -22,6 +23,7 @@
 		259F241C289E6A1D570F0B7E /* IGCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGCrypto.swift; sourceTree = "<group>"; };
 		30141E4237647916783FC69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayerView.swift; sourceTree = "<group>"; };
+		4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingToken.swift; sourceTree = "<group>"; };
 		60D83596C0DCECFA60D6B7CD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6DDC202E3E0D2AA5049E9139 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsFeedView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 				4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */,
 				9D64B74952EA0CDBA56EF012 /* Reel.swift */,
 				9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */,
+				4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */,
 			);
 			path = Brainrotter3D;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 				6FB3383EB3A68D4EC9FBCAA8 /* LoopingPlayerView.swift in Sources */,
 				FB929338DB3A1F769B45BCA9 /* Reel.swift in Sources */,
 				A5303B1873DA56094AAEABC8 /* ReelsFeedView.swift in Sources */,
+				43851DC953428E5C9052A1BE /* TrackingToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

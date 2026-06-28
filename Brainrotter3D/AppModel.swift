@@ -23,6 +23,13 @@ final class AppModel {
     private var loadingMore = false
     var feedExhausted = false
 
+    /// When ON, advancing a reel uploads the confirmed-live watch signal
+    /// (`clips/write_seen_state/`) to Instagram. When OFF you watch privately and nothing
+    /// is reported. Default OFF — observe, don't fabricate.
+    var sendAnalytics = false
+    /// Set when the most recent advance actually uploaded a signal (for the UI).
+    var lastSignalSent = false
+
     var username: String { client.username ?? "" }
 
     // MARK: Launch / resume
@@ -115,6 +122,8 @@ final class AppModel {
     }
 
     func markSeen(_ reel: Reel) {
+        guard sendAnalytics else { lastSignalSent = false; return }
+        lastSignalSent = true
         Task { await client.writeSeenState(pk: reel.pk) }
     }
 }

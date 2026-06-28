@@ -7,6 +7,7 @@ struct LoopingPlayerView: UIViewRepresentable {
     let url: URL
     var isActive: Bool
     var isMuted: Bool
+    var isPaused: Bool
 
     func makeUIView(context: Context) -> PlayerUIView {
         let view = PlayerUIView()
@@ -16,7 +17,7 @@ struct LoopingPlayerView: UIViewRepresentable {
 
     func updateUIView(_ view: PlayerUIView, context: Context) {
         view.setMuted(isMuted)
-        view.setActive(isActive)
+        view.setPlaying(isActive && !isPaused)
     }
 
     static func dismantleUIView(_ view: PlayerUIView, coordinator: ()) {
@@ -42,9 +43,9 @@ final class PlayerUIView: UIView {
         backgroundColor = .black
     }
 
-    func setActive(_ active: Bool) {
+    func setPlaying(_ playing: Bool) {
         guard let player else { return }
-        if active {
+        if playing {
             if player.timeControlStatus != .playing { player.play() }
         } else {
             player.pause()

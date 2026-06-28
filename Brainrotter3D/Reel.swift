@@ -12,6 +12,13 @@ struct Reel: Identifiable, Equatable {
     let duration: Double
     let hasAudio: Bool
 
+    // Algorithm / ranking signals the feed attaches to every reel (see ALGORITHM_SIGNALS.md).
+    let trackingTokenRaw: String?
+    let loggingInfoToken: String?
+    let rankedAt: String?
+    let rankedPosition: Int?
+    let tracking: TrackingInfo?
+
     var id: String { pk }
     var permalink: URL? { code.flatMap { URL(string: "https://www.instagram.com/reel/\($0)/") } }
 
@@ -39,6 +46,12 @@ struct Reel: Identifiable, Equatable {
 
         duration = (m["video_duration"] as? Double) ?? 0
         hasAudio = (m["has_audio"] as? Bool) ?? false
+
+        trackingTokenRaw = m["organic_tracking_token"] as? String
+        loggingInfoToken = m["logging_info_token"] as? String
+        if let r = m["ranked_at"] { rankedAt = String(describing: r) } else { rankedAt = nil }
+        rankedPosition = (m["client_position"] as? Int) ?? (m["ranked_position"] as? Int)
+        tracking = TrackingToken.decode(trackingTokenRaw)
     }
 }
 

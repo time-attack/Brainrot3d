@@ -191,9 +191,27 @@ The app (`Brainrotter3D` target) is plain SwiftUI plus AVFoundation:
 - `LoginView.swift` - native username/password and two-factor screens, on glass.
 - `ReelsFeedView.swift` - a vertical, page-snapping scroll of full-window reels with an
   author overlay, a mute toggle, and a glass ornament for refresh and log out. It plays
-  only the on-screen reel and prefetches the next page as you approach the end.
+  only the on-screen reel and prefetches the next page as you approach the end. Tap the
+  video or the ornament button to pause and resume.
 - `LoopingPlayerView.swift` - an `AVQueuePlayer` + `AVPlayerLooper` view for seamless
   looping playback.
+- `TrackingToken.swift` - decoder for a reel's `organic_tracking_token`.
+
+### Algorithm signals panel
+
+Each reel in the feed ships ranking and linkage metadata (see section 2). The chart button
+in the top bar opens a live panel that surfaces it:
+
+- The "served context" Instagram delivered the reel under: the media PK and viewer id baked
+  into the decoded `organic_tracking_token`, the time it was served, whether it is
+  analytics-tracked, `ranked_at`, the feed position, and the `logging_info_token`.
+- A "this watch" meter measured locally as you watch: watch time, completion percentage,
+  audio on/off, and visibility - the same quantities the app's `seen state` model reports.
+
+A toggle in the top bar controls whether the confirmed-live watch signal
+(`clips/write_seen_state/`) is actually uploaded to Instagram. It defaults to off, so you
+watch privately and nothing is reported; turning it on reports the real view. The panel
+only ever measures and displays - it never fabricates or replays signals.
 
 Session tokens are stored on-device so the app resumes straight into the feed on the next
 launch.
