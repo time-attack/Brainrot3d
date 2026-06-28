@@ -30,6 +30,14 @@ final class AppModel {
     /// Set when the most recent advance actually uploaded a signal (for the UI).
     var lastSignalSent = false
 
+    /// Live like/comment state per reel pk (optimistic, refreshed from media_info).
+    struct Engagement { var liked: Bool; var likeCount: Int; var commentCount: Int }
+    var engagement: [String: Engagement] = [:]
+
+    func engagement(for reel: Reel) -> Engagement {
+        engagement[reel.pk] ?? Engagement(liked: reel.hasLiked, likeCount: reel.likeCount, commentCount: reel.commentCount)
+    }
+
     var username: String { client.username ?? "" }
 
     // MARK: Launch / resume
@@ -125,5 +133,65 @@ final class AppModel {
         guard sendAnalytics else { lastSignalSent = false; return }
         lastSignalSent = true
         Task { await client.writeSeenState(pk: reel.pk) }
+    }
+
+    // MARK: Engagement
+
+    /// Refresh real like/comment counts for a reel from media_info.
+    func refreshMeta(_ reel: Reel) {
+        Task {
+            guard let meta = await client.mediaMeta(reel.pk) else { return }
+            engagement[reel.pk] = Engagement(liked: meta.hasLiked,
+                                             likeCount: meta.likeCount,
+                                             commentCount: meta.commentCount)
+        }
+    }
+
+    /// Optimistically toggle like, then send to Instagram.
+    func toggleLike(_ reel: Reel) {
+        var e = engagement(for: reel)
+        let on = !e.liked
+        e.liked = on
+        e.likeCount = max(0, e.likeCount + (on ? 1 : -1))
+        engagement[reel.pk] = e
+        Task { _ = await client.like(reel.pk, on: on) }
+    }
+
+    /// Force a like on (for double-tap), no toggle off.
+    func likeOn(_ reel: Reel) {
+        var e = engagement(for: reel)
+        guard !e.liked else { return }
+        e.liked = true
+        e.likeCount += 1
+        engagement[reel.pk] = e
+        Task { _ = await client.like(reel.pk, on: true) }
+    }
+
+    func setCommentCount(_ reel: Reel, _ count: Int) {
+        var e = engagement(for: reel)
+        e.commentCount = count
+        engagement[reel.pk] = e
+    }
+}
+
+// Convenience pass-throughs so views can await the client via the model.
+extension AppModel {
+    func loadComments(_ reel: Reel, maxID: String? = nil) async -> CommentsPage {
+        await client.comments(reel.pk, maxID: maxID)
+    }
+    func loadReplies(_ reel: Reel, commentID: String) async -> [IGComment] {
+        await client.replies(reel.pk, commentID: commentID)
+    }
+    func toggleCommentLike(_ commentID: String, on: Bool) async -> Bool {
+        await client.likeComment(commentID, on: on)
+    }
+    func loadLikers(_ reel: Reel) async -> [IGUser] {
+        await client.likers(reel.pk)
+    }
+    func loadRecipients(_ query: String) async -> [Recipient] {
+        await client.rankedRecipients(query: query)
+    }
+    func share(_ reel: Reel, threadIDs: [String], userIDs: [String], text: String) async -> Bool {
+        await client.shareMedia(reel.pk, threadIDs: threadIDs, userIDs: userIDs, text: text)
     }
 }

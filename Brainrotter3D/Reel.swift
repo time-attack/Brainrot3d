@@ -12,6 +12,12 @@ struct Reel: Identifiable, Equatable {
     let duration: Double
     let hasAudio: Bool
 
+    // Engagement counts carried inline on the stream item (refreshed via media_info).
+    let likeCount: Int
+    let commentCount: Int
+    let hasLiked: Bool
+    let caption: String
+
     // Algorithm / ranking signals the feed attaches to every reel (see ALGORITHM_SIGNALS.md).
     let trackingTokenRaw: String?
     let loggingInfoToken: String?
@@ -46,6 +52,11 @@ struct Reel: Identifiable, Equatable {
 
         duration = (m["video_duration"] as? Double) ?? 0
         hasAudio = (m["has_audio"] as? Bool) ?? false
+
+        likeCount = (m["like_count"] as? Int) ?? 0
+        commentCount = (m["comment_count"] as? Int) ?? 0
+        hasLiked = (m["has_liked"] as? Bool) ?? false
+        caption = ((m["caption"] as? [String: Any])?["text"] as? String) ?? ""
 
         trackingTokenRaw = m["organic_tracking_token"] as? String
         loggingInfoToken = m["logging_info_token"] as? String

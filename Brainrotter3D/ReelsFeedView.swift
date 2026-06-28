@@ -25,10 +25,9 @@ struct ReelsFeedView: View {
                             ReelCell(reel: reel,
                                      isActive: reel.id == activeID,
                                      muted: muted,
-                                     paused: paused && reel.id == activeID)
+                                     paused: paused && reel.id == activeID,
+                                     togglePause: { paused.toggle() })
                                 .containerRelativeFrame([.horizontal, .vertical])
-                                .contentShape(Rectangle())
-                                .onTapGesture { paused.toggle() }
                                 .id(reel.id)
                         }
                     }
@@ -122,7 +121,9 @@ struct ReelsFeedView: View {
 
     private func onAdvance(to id: String?) {
         guard let id, let idx = model.reels.firstIndex(where: { $0.id == id }) else { return }
-        model.markSeen(model.reels[idx])
+        let reel = model.reels[idx]
+        model.markSeen(reel)
+        model.refreshMeta(reel)
         if idx >= model.reels.count - 3 { Task { await model.loadMore() } }
     }
 }
@@ -130,50 +131,116 @@ struct ReelsFeedView: View {
 // MARK: - Reel cell
 
 private struct ReelCell: View {
+    @Environment(AppModel.self) private var model
     let reel: Reel
     let isActive: Bool
     let muted: Bool
     let paused: Bool
+    var togglePause: () -> Void
+
+    @State private var showComments = false
+    @State private var showShare = false
+    @State private var showLikers = false
+    @State private var burst = false
+
+    private var eng: AppModel.Engagement { model.engagement(for: reel) }
 
     var body: some View {
-        ZStack(alignment: .bottomLeading) {
+        ZStack(alignment: .bottom) {
             LoopingPlayerView(url: reel.videoURL, isActive: isActive, isMuted: muted, isPaused: paused)
                 .ignoresSafeArea()
 
-            // Big play glyph while paused.
-            if paused {
-                Image(systemName: "play.fill")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.white.opacity(0.85))
-                    .shadow(radius: 8)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .allowsHitTesting(false)
-            }
-
-            LinearGradient(colors: [.clear, .black.opacity(0.7)], startPoint: .center, endPoint: .bottom)
+            LinearGradient(colors: [.clear, .black.opacity(0.75)], startPoint: .center, endPoint: .bottom)
                 .allowsHitTesting(false)
 
-            VStack(alignment: .leading, spacing: 6) {
-                HStack(spacing: 9) {
-                    AsyncImage(url: reel.profilePic) { img in img.resizable().scaledToFill() }
-                        placeholder: { Color.gray.opacity(0.3) }
-                        .frame(width: 34, height: 34).clipShape(Circle())
-                        .overlay(Circle().stroke(.white, lineWidth: 1))
-                    Text("@\(reel.username)").font(.subheadline.bold())
-                    if reel.verified {
-                        Image(systemName: "checkmark.seal.fill").foregroundStyle(.blue).font(.caption)
-                    }
-                }
-                if !reel.fullName.isEmpty {
-                    Text(reel.fullName).font(.caption).foregroundStyle(.white.opacity(0.85))
-                }
-                Text("⏱ \(reel.duration, specifier: "%.1f")s  \(reel.hasAudio ? "🔊" : "🔇")")
-                    .font(.caption2).foregroundStyle(.white.opacity(0.7))
+            if paused {
+                Image(systemName: "play.fill")
+                    .font(.system(size: 64)).foregroundStyle(.white.opacity(0.85)).shadow(radius: 8)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity).allowsHitTesting(false)
             }
-            .foregroundStyle(.white)
-            .padding(.horizontal, 18).padding(.bottom, 28)
+            if burst {
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 110)).foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .transition(.scale.combined(with: .opacity)).allowsHitTesting(false)
+            }
+
+            // Full-area tap layer: single = pause, double = like.
+            Color.clear
+                .contentShape(Rectangle())
+                .onTapGesture(count: 2) { doubleTapLike() }
+                .onTapGesture { togglePause() }
+
+            meta.allowsHitTesting(false)
+            actionRail
         }
         .background(Color.black)
+        .sheet(isPresented: $showComments) { CommentsView(reel: reel) }
+        .sheet(isPresented: $showShare) { ShareView(reel: reel) }
+        .sheet(isPresented: $showLikers) { LikersView(reel: reel) }
+    }
+
+    private var meta: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 9) {
+                AsyncImage(url: reel.profilePic) { $0.resizable().scaledToFill() }
+                    placeholder: { Color.gray.opacity(0.3) }
+                    .frame(width: 34, height: 34).clipShape(Circle())
+                    .overlay(Circle().stroke(.white, lineWidth: 1))
+                Text("@\(reel.username)").font(.subheadline.bold())
+                if reel.verified { Image(systemName: "checkmark.seal.fill").foregroundStyle(.blue).font(.caption) }
+            }
+            if !reel.caption.isEmpty {
+                Text(reel.caption).font(.caption).foregroundStyle(.white.opacity(0.9)).lineLimit(2)
+            }
+            Text("⏱ \(reel.duration, specifier: "%.1f")s  \(reel.hasAudio ? "🔊" : "🔇")")
+                .font(.caption2).foregroundStyle(.white.opacity(0.7))
+        }
+        .foregroundStyle(.white)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, 18).padding(.trailing, 78).padding(.bottom, 26)
+    }
+
+    private var actionRail: some View {
+        VStack(spacing: 20) {
+            // Like (double-tap on video also likes). Long-press to see who liked.
+            VStack(spacing: 3) {
+                Button { model.toggleLike(reel) } label: {
+                    Image(systemName: eng.liked ? "heart.fill" : "heart")
+                        .font(.system(size: 30)).foregroundStyle(eng.liked ? .red : .white)
+                }
+                .buttonStyle(.borderless)
+                .simultaneousGesture(LongPressGesture().onEnded { _ in showLikers = true })
+                Text(countLabel(eng.likeCount)).font(.caption2.bold())
+            }
+            VStack(spacing: 3) {
+                Button { showComments = true } label: {
+                    Image(systemName: "bubble.right.fill").font(.system(size: 28)).foregroundStyle(.white)
+                }
+                .buttonStyle(.borderless)
+                Text(countLabel(eng.commentCount)).font(.caption2.bold())
+            }
+            Button { showShare = true } label: {
+                Image(systemName: "paperplane.fill").font(.system(size: 26)).foregroundStyle(.white)
+            }
+            .buttonStyle(.borderless)
+        }
+        .foregroundStyle(.white)
+        .shadow(radius: 4)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+        .padding(.trailing, 16).padding(.bottom, 30)
+    }
+
+    private func doubleTapLike() {
+        model.likeOn(reel)
+        withAnimation(.spring(response: 0.3)) { burst = true }
+        Task { try? await Task.sleep(nanoseconds: 600_000_000); withAnimation { burst = false } }
+    }
+
+    private func countLabel(_ n: Int) -> String {
+        if n >= 1_000_000 { return String(format: "%.1fM", Double(n) / 1_000_000) }
+        if n >= 1_000 { return String(format: "%.1fK", Double(n) / 1_000) }
+        return "\(n)"
     }
 }
 

@@ -9,29 +9,35 @@
 /* Begin PBXBuildFile section */
 		07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259F241C289E6A1D570F0B7E /* IGCrypto.swift */; };
 		43851DC953428E5C9052A1BE /* TrackingToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */; };
+		57F35D4C1CF990266C98AC32 /* Engagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69792273FA382F53B23398E /* Engagement.swift */; };
 		64062B66FA5054FF1D75083D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B00B61D5235A4A3094EB5E /* AppModel.swift */; };
 		69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D83596C0DCECFA60D6B7CD /* LoginView.swift */; };
 		6BF577557127762BF85C28B7 /* IGClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B970132A086553681C141 /* IGClient.swift */; };
 		6FB3383EB3A68D4EC9FBCAA8 /* LoopingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */; };
+		950FFD1192F02BA9C5BC59B8 /* CommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2AEB68B1C29278F4CAA645 /* CommentsView.swift */; };
 		A5303B1873DA56094AAEABC8 /* ReelsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */; };
+		C2A841DC7CFF3D238895BFEF /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180EDA62618C3B7763D6BB0D /* ShareView.swift */; };
 		CF531628A2E5D9C2876C743F /* Brainrotter3DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4784066349B5369931D459 /* Brainrotter3DApp.swift */; };
 		D753419A0705050DB0F9BF52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC202E3E0D2AA5049E9139 /* ContentView.swift */; };
 		FB929338DB3A1F769B45BCA9 /* Reel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64B74952EA0CDBA56EF012 /* Reel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180EDA62618C3B7763D6BB0D /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		259F241C289E6A1D570F0B7E /* IGCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGCrypto.swift; sourceTree = "<group>"; };
 		30141E4237647916783FC69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayerView.swift; sourceTree = "<group>"; };
 		4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingToken.swift; sourceTree = "<group>"; };
 		60D83596C0DCECFA60D6B7CD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6DDC202E3E0D2AA5049E9139 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9B2AEB68B1C29278F4CAA645 /* CommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsView.swift; sourceTree = "<group>"; };
 		9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsFeedView.swift; sourceTree = "<group>"; };
 		9D64B74952EA0CDBA56EF012 /* Reel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reel.swift; sourceTree = "<group>"; };
 		BB23815D7DF47F24E6AA8552 /* Brainrotter3D.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Brainrotter3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4784066349B5369931D459 /* Brainrotter3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brainrotter3DApp.swift; sourceTree = "<group>"; };
 		C3B00B61D5235A4A3094EB5E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		D33B970132A086553681C141 /* IGClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGClient.swift; sourceTree = "<group>"; };
+		D69792273FA382F53B23398E /* Engagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engagement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -40,7 +46,9 @@
 			children = (
 				C3B00B61D5235A4A3094EB5E /* AppModel.swift */,
 				BB4784066349B5369931D459 /* Brainrotter3DApp.swift */,
+				9B2AEB68B1C29278F4CAA645 /* CommentsView.swift */,
 				6DDC202E3E0D2AA5049E9139 /* ContentView.swift */,
+				D69792273FA382F53B23398E /* Engagement.swift */,
 				D33B970132A086553681C141 /* IGClient.swift */,
 				259F241C289E6A1D570F0B7E /* IGCrypto.swift */,
 				30141E4237647916783FC69F /* Info.plist */,
@@ -48,6 +56,7 @@
 				4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */,
 				9D64B74952EA0CDBA56EF012 /* Reel.swift */,
 				9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */,
+				180EDA62618C3B7763D6BB0D /* ShareView.swift */,
 				4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */,
 			);
 			path = Brainrotter3D;
@@ -130,13 +139,16 @@
 			files = (
 				64062B66FA5054FF1D75083D /* AppModel.swift in Sources */,
 				CF531628A2E5D9C2876C743F /* Brainrotter3DApp.swift in Sources */,
+				950FFD1192F02BA9C5BC59B8 /* CommentsView.swift in Sources */,
 				D753419A0705050DB0F9BF52 /* ContentView.swift in Sources */,
+				57F35D4C1CF990266C98AC32 /* Engagement.swift in Sources */,
 				6BF577557127762BF85C28B7 /* IGClient.swift in Sources */,
 				07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */,
 				69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */,
 				6FB3383EB3A68D4EC9FBCAA8 /* LoopingPlayerView.swift in Sources */,
 				FB929338DB3A1F769B45BCA9 /* Reel.swift in Sources */,
 				A5303B1873DA56094AAEABC8 /* ReelsFeedView.swift in Sources */,
+				C2A841DC7CFF3D238895BFEF /* ShareView.swift in Sources */,
 				43851DC953428E5C9052A1BE /* TrackingToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -97,7 +97,7 @@ final class IGClient {
     // MARK: Low-level
 
     @discardableResult
-    private func post(_ path: String, data: [String: String]?, signed: Bool = true,
+    func post(_ path: String, data: [String: String]?, signed: Bool = true,
                       extra: [String: String] = [:]) async throws -> (Data, HTTPURLResponse) {
         var bodyString = ""
         if let data {
@@ -112,7 +112,7 @@ final class IGClient {
     }
 
     @discardableResult
-    private func get(_ path: String, params: [String: String] = [:],
+    func get(_ path: String, params: [String: String] = [:],
                      extra: [String: String] = [:]) async throws -> (Data, HTTPURLResponse) {
         var p = path
         if !params.isEmpty {
@@ -146,7 +146,7 @@ final class IGClient {
         return s
     }
 
-    private func jsonObject(_ data: Data) -> [String: Any] {
+    func jsonObject(_ data: Data) -> [String: Any] {
         (try? JSONSerialization.jsonObject(with: data)) as? [String: Any] ?? [:]
     }
 

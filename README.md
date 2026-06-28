@@ -157,6 +157,24 @@ Two supporting endpoints:
 - `POST /api/v1/clips/write_seen_state/` to register that a reel was watched. This wants a
   flat `media_ids` JSON array; a nested impressions object makes the server return 500.
 
+### 2.7 Engagement
+
+The same media id drives the full set of engagement endpoints, all confirmed live:
+
+- Like / unlike a reel: `POST /api/v1/media/{id}/like/` and `/unlike/`.
+- Read comments with threading: `GET /api/v1/media/{id}/comments/`, and a comment's replies
+  via `GET /api/v1/media/{id}/comments/{comment_id}/child_comments/`. Animated/GIF comments
+  carry their image under `animated_media`.
+- Like / unlike a comment: `POST /api/v1/media/{comment_id}/comment_like/` and
+  `/comment_unlike/`.
+- Who liked it: `GET /api/v1/media/{id}/likers/`.
+- Share to direct messages: `GET /api/v1/direct_v2/ranked_recipients/` to list people and
+  group threads, then `POST /api/v1/direct_v2/threads/broadcast/media_share/` with
+  `thread_ids` and/or a `recipient_users` matrix and an optional `text`.
+
+Live counts (like count, comment count, has-liked, caption, top-liker facepile) come back on
+the stream item and are refreshed from `media/{id}/info/`.
+
 ---
 
 ## 3. From Python proof to a native Swift client
@@ -190,12 +208,26 @@ The app (`Brainrotter3D` target) is plain SwiftUI plus AVFoundation:
 - `ContentView.swift` - a small state machine: launching, login, two-factor, feed.
 - `LoginView.swift` - native username/password and two-factor screens, on glass.
 - `ReelsFeedView.swift` - a vertical, page-snapping scroll of full-window reels with an
-  author overlay, a mute toggle, and a glass ornament for refresh and log out. It plays
-  only the on-screen reel and prefetches the next page as you approach the end. Tap the
-  video or the ornament button to pause and resume.
+  author overlay, a like/comment/share action rail, a mute toggle, and a glass ornament for
+  refresh and log out. It plays only the on-screen reel and prefetches the next page as you
+  approach the end. Tap the video or the ornament button to pause and resume; double-tap to
+  like.
 - `LoopingPlayerView.swift` - an `AVQueuePlayer` + `AVPlayerLooper` view for seamless
   looping playback.
 - `TrackingToken.swift` - decoder for a reel's `organic_tracking_token`.
+- `Engagement.swift` - the like / comment / reply / comment-like / likers / DM-share client
+  calls and their models.
+- `CommentsView.swift`, `ShareView.swift` - the comments sheet (with threaded replies, GIF
+  comments, and per-comment likes), the DM share sheet (recipient picker plus message), and
+  the likers list.
+
+### Engagement
+
+The action rail on each reel is wired to the engagement endpoints in section 2.7. You can
+like and unlike (with an optimistic count and a double-tap heart burst), long-press the heart
+to see who liked it, open a comments sheet that loads threaded replies and lets you like
+individual comments, and share a reel into your direct-message threads or to individual
+people with an optional note.
 
 ### Algorithm signals panel
 
