@@ -1,0 +1,23 @@
+# Xcode / build
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad/
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# macOS
+.DS_Store
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# Secrets / sessions (never commit credentials or tokens)
+*.ig_session.json
+.ig_session.json
+secrets.json

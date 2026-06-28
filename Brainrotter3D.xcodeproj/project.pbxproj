@@ -1,0 +1,332 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259F241C289E6A1D570F0B7E /* IGCrypto.swift */; };
+		64062B66FA5054FF1D75083D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B00B61D5235A4A3094EB5E /* AppModel.swift */; };
+		69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D83596C0DCECFA60D6B7CD /* LoginView.swift */; };
+		6BF577557127762BF85C28B7 /* IGClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B970132A086553681C141 /* IGClient.swift */; };
+		6FB3383EB3A68D4EC9FBCAA8 /* LoopingPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */; };
+		A5303B1873DA56094AAEABC8 /* ReelsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */; };
+		CF531628A2E5D9C2876C743F /* Brainrotter3DApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4784066349B5369931D459 /* Brainrotter3DApp.swift */; };
+		D753419A0705050DB0F9BF52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC202E3E0D2AA5049E9139 /* ContentView.swift */; };
+		FB929338DB3A1F769B45BCA9 /* Reel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D64B74952EA0CDBA56EF012 /* Reel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		259F241C289E6A1D570F0B7E /* IGCrypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGCrypto.swift; sourceTree = "<group>"; };
+		30141E4237647916783FC69F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopingPlayerView.swift; sourceTree = "<group>"; };
+		60D83596C0DCECFA60D6B7CD /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6DDC202E3E0D2AA5049E9139 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsFeedView.swift; sourceTree = "<group>"; };
+		9D64B74952EA0CDBA56EF012 /* Reel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reel.swift; sourceTree = "<group>"; };
+		BB23815D7DF47F24E6AA8552 /* Brainrotter3D.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Brainrotter3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB4784066349B5369931D459 /* Brainrotter3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brainrotter3DApp.swift; sourceTree = "<group>"; };
+		C3B00B61D5235A4A3094EB5E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		D33B970132A086553681C141 /* IGClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGClient.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0463D66456A6A505B9F48D34 /* Brainrotter3D */ = {
+			isa = PBXGroup;
+			children = (
+				C3B00B61D5235A4A3094EB5E /* AppModel.swift */,
+				BB4784066349B5369931D459 /* Brainrotter3DApp.swift */,
+				6DDC202E3E0D2AA5049E9139 /* ContentView.swift */,
+				D33B970132A086553681C141 /* IGClient.swift */,
+				259F241C289E6A1D570F0B7E /* IGCrypto.swift */,
+				30141E4237647916783FC69F /* Info.plist */,
+				60D83596C0DCECFA60D6B7CD /* LoginView.swift */,
+				4BA9C431BB2F4B9BA747FF52 /* LoopingPlayerView.swift */,
+				9D64B74952EA0CDBA56EF012 /* Reel.swift */,
+				9D01A5DAF15268A1E23D8C02 /* ReelsFeedView.swift */,
+			);
+			path = Brainrotter3D;
+			sourceTree = "<group>";
+		};
+		A90789B4CFA0B47CD07842AC = {
+			isa = PBXGroup;
+			children = (
+				0463D66456A6A505B9F48D34 /* Brainrotter3D */,
+				B9545E7971A4AC8C80A7EDF2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B9545E7971A4AC8C80A7EDF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB23815D7DF47F24E6AA8552 /* Brainrotter3D.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17D67C812C5E43359B43F306 /* Brainrotter3D */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA6377FAA8453AC9930068CB /* Build configuration list for PBXNativeTarget "Brainrotter3D" */;
+			buildPhases = (
+				024F03DDFD6E6014E999752C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Brainrotter3D;
+			packageProductDependencies = (
+			);
+			productName = Brainrotter3D;
+			productReference = BB23815D7DF47F24E6AA8552 /* Brainrotter3D.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2503FF0B9F7E5883B64F8840 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					17D67C812C5E43359B43F306 = {
+						DevelopmentTeam = 6PPS68Y9RP;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E30D9B27590C85CE6B0CF438 /* Build configuration list for PBXProject "Brainrotter3D" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A90789B4CFA0B47CD07842AC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B9545E7971A4AC8C80A7EDF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				17D67C812C5E43359B43F306 /* Brainrotter3D */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		024F03DDFD6E6014E999752C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64062B66FA5054FF1D75083D /* AppModel.swift in Sources */,
+				CF531628A2E5D9C2876C743F /* Brainrotter3DApp.swift in Sources */,
+				D753419A0705050DB0F9BF52 /* ContentView.swift in Sources */,
+				6BF577557127762BF85C28B7 /* IGClient.swift in Sources */,
+				07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */,
+				69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */,
+				6FB3383EB3A68D4EC9FBCAA8 /* LoopingPlayerView.swift in Sources */,
+				FB929338DB3A1F769B45BCA9 /* Reel.swift in Sources */,
+				A5303B1873DA56094AAEABC8 /* ReelsFeedView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A329432999A369392AF1797 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PPS68Y9RP;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Brainrotter3D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainrotter.reels;
+				SDKROOT = xros;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Debug;
+		};
+		3B61354EEA67A357B334371D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6PPS68Y9RP;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Brainrotter3D/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.brainrotter.reels;
+				SDKROOT = xros;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Release;
+		};
+		4F5F955AB02640AE74A43AE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		910089F09FD06BA2D10EED20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA6377FAA8453AC9930068CB /* Build configuration list for PBXNativeTarget "Brainrotter3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A329432999A369392AF1797 /* Debug */,
+				3B61354EEA67A357B334371D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E30D9B27590C85CE6B0CF438 /* Build configuration list for PBXProject "Brainrotter3D" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F5F955AB02640AE74A43AE2 /* Debug */,
+				910089F09FD06BA2D10EED20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2503FF0B9F7E5883B64F8840 /* Project object */;
+}

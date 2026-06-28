@@ -1,0 +1,41 @@
+name: Brainrotter3D
+options:
+  bundleIdPrefix: com.brainrotter
+  createIntermediateGroups: true
+  deploymentTarget:
+    visionOS: "2.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    SWIFT_STRICT_CONCURRENCY: minimal
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "7"          # 7 = visionOS
+
+targets:
+  Brainrotter3D:
+    type: application
+    platform: visionOS
+    sources:
+      - path: Brainrotter3D
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.brainrotter.reels
+        GENERATE_INFOPLIST_FILE: NO
+        ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: NO
+        # Device signing — automatic, using the connected Mac's Apple Development identity.
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 6PPS68Y9RP
+    info:
+      path: Brainrotter3D/Info.plist
+      properties:
+        CFBundleDisplayName: Brainrotter
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        # Allow the app to reach the local Flask reels server over plain HTTP.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+        # visionOS asks the user before talking to devices on the LAN (your Mac).
+        NSLocalNetworkUsageDescription: >-
+          Brainrotter connects to the Reels server running on your Mac to stream your feed.
