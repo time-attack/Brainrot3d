@@ -1,4 +1,33 @@
-# Brainrot3d
+<p align="center">
+  <img src="assets/icon/flat1024.png" width="168" alt="Brainrot3d app icon" />
+</p>
+
+<h1 align="center">Brainrot3d</h1>
+
+<p align="center"><b>Doomscroll in 3D.</b><br/>
+Instagram Reels on Apple Vision Pro — login, feed, and full engagement, all native and on-device.</p>
+
+<p align="center">
+  <img alt="platform" src="https://img.shields.io/badge/platform-visionOS%2026-8A2BE2" />
+  <img alt="language" src="https://img.shields.io/badge/Swift-5-orange" />
+  <img alt="server" src="https://img.shields.io/badge/server-none-ff3ea5" />
+  <img alt="approach" src="https://img.shields.io/badge/built%20from-the%20binary-4cc9f0" />
+</p>
+
+<p align="center">
+  <img src="marketing/01_feed.png" width="32%" />
+  <img src="marketing/02_engage.png" width="32%" />
+  <img src="marketing/03_algo.png" width="32%" />
+</p>
+<p align="center">
+  <img src="marketing/04_profile.png" width="48%" />
+  <img src="marketing/05_tech.png" width="48%" />
+</p>
+
+> Independent research / educational project. Not affiliated with Instagram or Meta.
+> Uses private endpoints and may violate Instagram's Terms of Service — see the disclaimer.
+
+---
 
 A fully self-contained Apple Vision Pro app for watching Instagram Reels in the headset.
 There is no companion server, no webview, and no third-party library. The app speaks the

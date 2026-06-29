@@ -24,6 +24,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.brainrotter.reels
         GENERATE_INFOPLIST_FILE: NO
         ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         # Device signing — automatic, using the connected Mac's Apple Development identity.
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 6PPS68Y9RP

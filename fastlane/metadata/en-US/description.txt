@@ -1,0 +1,18 @@
+Brainrot3d turns your Apple Vision Pro into the most immersive way to lose track of time.
+
+Your short-form video feed floats in a tall, portrait window right in your space. Scroll
+vertically with a flick, and each clip snaps to fill the frame and loops seamlessly.
+
+FEATURES
+- A native, vertical, infinite feed — autoplay, seamless looping, tap to pause.
+- Full engagement: double-tap or tap the heart to like, open threaded comments (with GIF
+  comments and per-comment likes), see who liked a clip, and reshare into your messages.
+- Creator profiles: open anyone's profile for their bio and a spatial grid of their clips,
+  then play any of them full-window.
+- An "Algorithm signals" panel that shows the live ranking context and a watch-time meter
+  for the current clip — or flip a switch to watch privately.
+
+Brainrot3d runs entirely on your device. There is no companion app and no server.
+
+This is an independent project and is not affiliated with, authorized by, or endorsed by
+any third-party service.

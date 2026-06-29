@@ -1,0 +1,5 @@
+First release.
+- Native vertical Reels feed with pause, mute, and seamless looping.
+- Likes, threaded comments, likers, and share-to-DM.
+- Creator profiles with a spatial reel grid.
+- Live algorithm-signals panel with a privacy switch.

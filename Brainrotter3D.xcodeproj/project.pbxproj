@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		07A56F87E04FA4CD25A937DB /* IGCrypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259F241C289E6A1D570F0B7E /* IGCrypto.swift */; };
 		43851DC953428E5C9052A1BE /* TrackingToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9C6A87D660ED2FB18F2BE2 /* TrackingToken.swift */; };
+		4621B2156312BD877F7E4D27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E772DE750D55EAC375AFD /* Assets.xcassets */; };
 		57F35D4C1CF990266C98AC32 /* Engagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69792273FA382F53B23398E /* Engagement.swift */; };
 		64062B66FA5054FF1D75083D /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B00B61D5235A4A3094EB5E /* AppModel.swift */; };
 		69415C49BB41AB18FBAF4DDB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D83596C0DCECFA60D6B7CD /* LoginView.swift */; };
@@ -38,6 +39,7 @@
 		BB23815D7DF47F24E6AA8552 /* Brainrotter3D.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Brainrotter3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4784066349B5369931D459 /* Brainrotter3DApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brainrotter3DApp.swift; sourceTree = "<group>"; };
 		C3B00B61D5235A4A3094EB5E /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		C86E772DE750D55EAC375AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D33B970132A086553681C141 /* IGClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGClient.swift; sourceTree = "<group>"; };
 		D69792273FA382F53B23398E /* Engagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engagement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				C3B00B61D5235A4A3094EB5E /* AppModel.swift */,
+				C86E772DE750D55EAC375AFD /* Assets.xcassets */,
 				BB4784066349B5369931D459 /* Brainrotter3DApp.swift */,
 				9B2AEB68B1C29278F4CAA645 /* CommentsView.swift */,
 				6DDC202E3E0D2AA5049E9139 /* ContentView.swift */,
@@ -89,6 +92,7 @@
 			buildConfigurationList = CA6377FAA8453AC9930068CB /* Build configuration list for PBXNativeTarget "Brainrotter3D" */;
 			buildPhases = (
 				024F03DDFD6E6014E999752C /* Sources */,
+				60EDDC77C941E3E50A55C77B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -134,6 +138,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		60EDDC77C941E3E50A55C77B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4621B2156312BD877F7E4D27 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		024F03DDFD6E6014E999752C /* Sources */ = {

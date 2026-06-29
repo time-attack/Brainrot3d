@@ -1,0 +1,4 @@
+app_identifier("com.brainrotter.reels")
+apple_id("personal@matianlaw.com")
+team_id("6PPS68Y9RP")        # NOTE: this is a free personal team — App Store submission
+                             # requires a paid Apple Developer Program team id. See PUBLISHING.md.

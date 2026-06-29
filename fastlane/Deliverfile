@@ -1,0 +1,13 @@
+# fastlane deliver config — uploads metadata + screenshots to App Store Connect.
+# Requires a PAID Apple Developer Program account (see PUBLISHING.md).
+app_identifier "com.brainrotter.reels"
+metadata_path "./fastlane/metadata"
+screenshots_path "./fastlane/screenshots"
+
+# Don't auto-submit for review; just stage everything in App Store Connect.
+submit_for_review false
+automatic_release false
+precheck_include_in_app_purchases false
+
+# visionOS marketing assets live under screenshots/en-US (3840x2160).
+overwrite_screenshots true
