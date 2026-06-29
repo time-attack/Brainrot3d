@@ -21,3 +21,9 @@ xcuserdata/
 *.ig_session.json
 .ig_session.json
 secrets.json
+
+# personal source captures (room photos) — keep out of the repo
+incoming/
+
+# installed agent skills (dev tooling, not app code)
+.agents/

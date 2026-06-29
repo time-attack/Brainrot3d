@@ -15,14 +15,14 @@ Instagram Reels on Apple Vision Pro — login, feed, and full engagement, all na
 </p>
 
 <p align="center">
-  <img src="marketing/01_feed.png" width="32%" />
-  <img src="marketing/02_engage.png" width="32%" />
-  <img src="marketing/03_algo.png" width="32%" />
+  <img src="marketing/01_hero.png" width="80%" />
 </p>
 <p align="center">
-  <img src="marketing/04_profile.png" width="48%" />
-  <img src="marketing/05_tech.png" width="48%" />
+  <img src="marketing/02_comments.png" width="48%" />
+  <img src="marketing/03_algorithm.png" width="48%" />
 </p>
+
+<p align="center"><sub>Store frames 2 &amp; 3 are real Apple Vision Pro captures — the passthrough room is blurred into a backdrop and the viewer id is redacted.</sub></p>
 
 > Independent research / educational project. Not affiliated with Instagram or Meta.
 > Uses private endpoints and may violate Instagram's Terms of Service — see the disclaimer.

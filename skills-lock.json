@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "ai-image-generation": {
+      "source": "runcomfy-com/skills",
+      "sourceType": "github",
+      "skillPath": "ai-image-generation/SKILL.md",
+      "computedHash": "765f5ce859b1943e948d4f747b768389d7a9f0c563d4e93f2a3231bc1a617944"
+    },
+    "app-store-screenshots": {
+      "source": "halt-catch-fire/skills",
+      "sourceType": "github",
+      "skillPath": "guides/design/app-store-screenshots/SKILL.md",
+      "computedHash": "a32d59a5965a5cd3b469aa471289db45f6c69eb428622bd44dfcb1113be3b1c4"
+    },
+    "nano-banana": {
+      "source": "kkoppenhaver/cc-nano-banana",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "54d011e93828a28e40df5be8c2810e3da4c2ef8323a155862375f79e574301a7"
+    }
+  }
+}
