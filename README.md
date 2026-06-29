@@ -175,6 +175,14 @@ The same media id drives the full set of engagement endpoints, all confirmed liv
 Live counts (like count, comment count, has-liked, caption, top-liker facepile) come back on
 the stream item and are refreshed from `media/{id}/info/`.
 
+### 2.8 Creator profiles
+
+A username resolves to a profile via `GET /api/v1/users/web_profile_info/?username=...`
+(with a `GET /api/v1/users/{username}/usernameinfo/` mobile fallback), which carries the
+display name, bio, verification, follower and following counts, and the numeric user id.
+That id feeds `POST /api/v1/clips/user/` (`target_user_id`, `page_size`, `include_feed_video`,
+paginated with `max_id`) to list that creator's own reels.
+
 ---
 
 ## 3. From Python proof to a native Swift client
@@ -218,8 +226,10 @@ The app (`Brainrotter3D` target) is plain SwiftUI plus AVFoundation:
 - `Engagement.swift` - the like / comment / reply / comment-like / likers / DM-share client
   calls and their models.
 - `CommentsView.swift`, `ShareView.swift` - the comments sheet (with threaded replies, GIF
-  comments, and per-comment likes), the DM share sheet (recipient picker plus message), and
-  the likers list.
+  comments, and per-comment likes), the DM share sheet (recipient picker, copy-link bar, and
+  message), and the likers list.
+- `ProfileView.swift` - a creator profile (header plus a grid of their reels) that opens a
+  full-window player when you tap a reel.
 
 ### Engagement
 
@@ -227,7 +237,8 @@ The action rail on each reel is wired to the engagement endpoints in section 2.7
 like and unlike (with an optimistic count and a double-tap heart burst), long-press the heart
 to see who liked it, open a comments sheet that loads threaded replies and lets you like
 individual comments, and share a reel into your direct-message threads or to individual
-people with an optional note.
+people with an optional note or a copied link. Tapping a creator's name or avatar opens their
+profile (section 2.8) with a grid of their reels you can play full-window.
 
 ### Algorithm signals panel
 

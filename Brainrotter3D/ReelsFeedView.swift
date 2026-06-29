@@ -130,7 +130,7 @@ struct ReelsFeedView: View {
 
 // MARK: - Reel cell
 
-private struct ReelCell: View {
+struct ReelCell: View {
     @Environment(AppModel.self) private var model
     let reel: Reel
     let isActive: Bool
@@ -141,6 +141,7 @@ private struct ReelCell: View {
     @State private var showComments = false
     @State private var showShare = false
     @State private var showLikers = false
+    @State private var showProfile = false
     @State private var burst = false
 
     private var eng: AppModel.Engagement { model.engagement(for: reel) }
@@ -171,33 +172,41 @@ private struct ReelCell: View {
                 .onTapGesture(count: 2) { doubleTapLike() }
                 .onTapGesture { togglePause() }
 
-            meta.allowsHitTesting(false)
+            meta
             actionRail
         }
         .background(Color.black)
         .sheet(isPresented: $showComments) { CommentsView(reel: reel) }
         .sheet(isPresented: $showShare) { ShareView(reel: reel) }
         .sheet(isPresented: $showLikers) { LikersView(reel: reel) }
+        .sheet(isPresented: $showProfile) { ProfileView(username: reel.username) }
     }
 
     private var meta: some View {
         VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 9) {
-                AsyncImage(url: reel.profilePic) { $0.resizable().scaledToFill() }
-                    placeholder: { Color.gray.opacity(0.3) }
-                    .frame(width: 34, height: 34).clipShape(Circle())
-                    .overlay(Circle().stroke(.white, lineWidth: 1))
-                Text("@\(reel.username)").font(.subheadline.bold())
-                if reel.verified { Image(systemName: "checkmark.seal.fill").foregroundStyle(.blue).font(.caption) }
+            // Tappable creator -> their profile + reels.
+            Button { showProfile = true } label: {
+                HStack(spacing: 9) {
+                    AsyncImage(url: reel.profilePic) { $0.resizable().scaledToFill() }
+                        placeholder: { Color.gray.opacity(0.3) }
+                        .frame(width: 34, height: 34).clipShape(Circle())
+                        .overlay(Circle().stroke(.white, lineWidth: 1))
+                    Text("@\(reel.username)").font(.subheadline.bold())
+                    if reel.verified { Image(systemName: "checkmark.seal.fill").foregroundStyle(.blue).font(.caption) }
+                }
             }
+            .buttonStyle(.plain)
+
             if !reel.caption.isEmpty {
                 Text(reel.caption).font(.caption).foregroundStyle(.white.opacity(0.9)).lineLimit(2)
+                    .allowsHitTesting(false)
             }
             Text("⏱ \(reel.duration, specifier: "%.1f")s  \(reel.hasAudio ? "🔊" : "🔇")")
                 .font(.caption2).foregroundStyle(.white.opacity(0.7))
+                .allowsHitTesting(false)
         }
         .foregroundStyle(.white)
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
         .padding(.leading, 18).padding(.trailing, 78).padding(.bottom, 26)
     }
 

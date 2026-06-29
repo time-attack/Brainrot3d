@@ -83,6 +83,17 @@ struct Recipient: Identifiable, Equatable {
     let verified: Bool
 }
 
+struct IGProfile: Equatable {
+    let userID: String
+    let username: String
+    let fullName: String
+    let bio: String
+    let picURL: URL?
+    let verified: Bool
+    let followerCount: Int?
+    let followingCount: Int?
+}
+
 // MARK: - Engagement API (likes / comments / replies / likers / share)
 
 extension IGClient {
@@ -192,5 +203,54 @@ extension IGClient {
         if !text.isEmpty { data["text"] = text }
         guard let (_, http) = try? await post("/api/v1/direct_v2/threads/broadcast/media_share/", data: data) else { return false }
         return http.statusCode == 200
+    }
+
+    // MARK: Creator profile + their reels
+
+    /// Resolve a username to a profile via web_profile_info (with a mobile fallback).
+    func profile(username: String) async -> IGProfile? {
+        if let (data, http) = try? await get("/api/v1/users/web_profile_info/", params: ["username": username]),
+           http.statusCode == 200,
+           let u = ((jsonObject(data)["data"] as? [String: Any])?["user"] as? [String: Any]) {
+            return IGProfile(
+                userID: String(describing: u["id"] ?? u["pk"] ?? ""),
+                username: (u["username"] as? String) ?? username,
+                fullName: (u["full_name"] as? String) ?? "",
+                bio: (u["biography"] as? String) ?? "",
+                picURL: (u["profile_pic_url"] as? String).flatMap(URL.init(string:)),
+                verified: (u["is_verified"] as? Bool) ?? false,
+                followerCount: (u["edge_followed_by"] as? [String: Any])?["count"] as? Int,
+                followingCount: (u["edge_follow"] as? [String: Any])?["count"] as? Int)
+        }
+        // mobile fallback: usernameinfo
+        guard let (data, http) = try? await get("/api/v1/users/\(username)/usernameinfo/"),
+              http.statusCode == 200,
+              let u = jsonObject(data)["user"] as? [String: Any] else { return nil }
+        return IGProfile(
+            userID: String(describing: u["pk"] ?? ""),
+            username: (u["username"] as? String) ?? username,
+            fullName: (u["full_name"] as? String) ?? "",
+            bio: (u["biography"] as? String) ?? "",
+            picURL: (u["profile_pic_url"] as? String).flatMap(URL.init(string:)),
+            verified: (u["is_verified"] as? Bool) ?? false,
+            followerCount: u["follower_count"] as? Int,
+            followingCount: u["following_count"] as? Int)
+    }
+
+    /// A creator's own reels. POST clips/user/
+    func userReels(userID: String, maxID: String? = nil) async -> (reels: [Reel], nextMaxID: String?) {
+        var data: [String: String] = ["target_user_id": userID, "page_size": "12",
+                                       "include_feed_video": "true", "_uuid": uuid]
+        if let maxID { data["max_id"] = maxID }
+        guard let (raw, http) = try? await post("/api/v1/clips/user/", data: data),
+              http.statusCode == 200 else { return ([], nil) }
+        let j = jsonObject(raw)
+        let items = (j["items"] as? [[String: Any]]) ?? []
+        let reels = items.compactMap { item -> Reel? in
+            Reel(json: (item["media"] as? [String: Any]) ?? item)
+        }
+        let paging = j["paging_info"] as? [String: Any]
+        let next = (paging?["max_id"] as? String) ?? (j["max_id"] as? String)
+        return (reels, next)
     }
 }

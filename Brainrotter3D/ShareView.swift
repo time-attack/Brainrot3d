@@ -1,4 +1,7 @@
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct ShareView: View {
     @Environment(AppModel.self) private var model
@@ -12,11 +15,31 @@ struct ShareView: View {
     @State private var loading = true
     @State private var sending = false
     @State private var result: String?
+    @State private var copied = false
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
                 List {
+                    if let link = reel.permalink {
+                        Section("Link") {
+                            HStack {
+                                Text(link.absoluteString).font(.caption.monospaced())
+                                    .lineLimit(1).truncationMode(.middle)
+                                Spacer()
+                                Button {
+                                    #if canImport(UIKit)
+                                    UIPasteboard.general.string = link.absoluteString
+                                    #endif
+                                    copied = true
+                                } label: {
+                                    Label(copied ? "Copied" : "Copy link",
+                                          systemImage: copied ? "checkmark" : "link")
+                                }
+                                .buttonStyle(.bordered)
+                            }
+                        }
+                    }
                     Section {
                         TextField("Add a message…", text: $message)
                     }

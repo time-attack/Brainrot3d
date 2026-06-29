@@ -194,4 +194,10 @@ extension AppModel {
     func share(_ reel: Reel, threadIDs: [String], userIDs: [String], text: String) async -> Bool {
         await client.shareMedia(reel.pk, threadIDs: threadIDs, userIDs: userIDs, text: text)
     }
+    func loadProfile(_ username: String) async -> IGProfile? {
+        await client.profile(username: username)
+    }
+    func loadUserReels(_ userID: String, maxID: String? = nil) async -> (reels: [Reel], nextMaxID: String?) {
+        await client.userReels(userID: userID, maxID: maxID)
+    }
 }
